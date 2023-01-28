@@ -75,8 +75,11 @@
         <div class="jumbotron bg-dark text-white" style="padding: 40px;">
             <div class="container">
                 <h1 class="display-4" style="font-weight: 900;">{{ house_name }}</h1>
-                <p class="lead" style="font-weight: 100;">{{ house_points[0][0] }} points</p><button type="button" class="btn btn-light">
-                    <a href="/edit">Edit</a></button>
+                <p class="lead" style="font-weight: 100;">{{ house_points[0][0] }} points</p>
+                <form action="/edit" method="post">
+                    <input type="hidden" name="house" value="{{ house_name }}">
+                    <button type="submit" class="btn btn-outline-warning">Edit</button>
+                </form>
             </div>
         </div>
     </header>
@@ -94,6 +97,12 @@
                 <td>{{ item[0] }}</td>
                 <td>{{ item[1] }}</td>
                 <td>{{ item[2] }}</td>
+                <td>
+                    <form action="/delete" method="post">
+                        <input name="name" type="hidden" value="{{ item[0] }}">
+                        <button type="submit" class="btn btn-outline-light">Delete</button>
+                    </form>
+                </td>
             </tr>
             {% endfor %}
         </tbody>
