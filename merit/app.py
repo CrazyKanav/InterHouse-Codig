@@ -57,6 +57,7 @@ def index():
         "pio": pio_points
     }
 
+
     return render_template("index.html", house=house, house_points=house_points)
 
 @app.route("/house/<house>")
